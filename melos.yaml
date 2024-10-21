@@ -1,0 +1,59 @@
+# TODO update repository name and url to your own
+name: flutter_masterclass
+#repository: https://github.com/aaroncrutchfield/melos_single_app_projects.git
+
+# TODO update packages to match your project structure
+packages:
+  # Directory where all apps will live
+  - ai_chat_app
+  - ai_chat_app/packages/**
+
+categories:
+  app:
+    - ai_chat_app
+  packages:
+    - ai_chat_app/packages/**
+
+command:
+  version:
+    # Generate commit links in package changelogs.
+    linkToCommits: true
+    # # Only allow versioning to happen on main branch.
+    # branch: master
+    # Additionally build a changelog at the root of the workspace.
+    workspaceChangelog: true
+    releaseUrl: true
+    message: |
+      chore: Cut app release 🎉
+      
+      {new_package_versions}
+
+  bootstrap:
+    # It seems so that running "pub get" in parallel has some issues (like
+    # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
+    # makes the CI much more stable.
+    runPubGetInParallel: false
+    usePubspecOverrides: true
+
+    environment:
+      sdk: ^3.5.0
+
+scripts:
+  test:selective_unit_test:
+    run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage
+    description: Run Flutter tests for a specific package in this project.
+    select-package:
+      flutter: true
+      dir-exists: test
+
+  test:
+    run: melos run test:selective_unit_test --no-select
+    description: Run all Flutter tests in this project.
+
+  analyze:
+    run: melos exec -- flutter analyze .
+    description: Run `dart analyze` in all packages.
+
+  gen_coverage: melos exec -- "\$MELOS_ROOT_PATH/combine_coverage.sh"
+
+

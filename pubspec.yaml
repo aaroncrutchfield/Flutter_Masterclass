@@ -1,0 +1,10 @@
+name: flutter_masterclass
+description: A repository for the Flutter Masterclass
+
+publish_to: none
+
+environment:
+  sdk: ^3.4.0
+
+dependencies:
+  melos: ^6.2.0     # Monorepo management
