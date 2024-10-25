@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1078268621920",
+    "project_id": "apostletec-ai-chat-app-dev",
+    "storage_bucket": "apostletec-ai-chat-app-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078268621920:android:c032aa24b1dcf339a53f05",
+        "android_client_info": {
+          "package_name": "com.apostletec.ai_chat_app.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMeD3am5si7haxQC2uDwtXIBLZJg_5CkA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
