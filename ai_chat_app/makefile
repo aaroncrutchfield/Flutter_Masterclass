@@ -6,6 +6,23 @@ ANDROID_PACKAGE_NAME := com.apostletec.ai_chat_app
 # Uses hyphens in place of spaces
 IOS_BUNDLE_ID := com.apostletec.ai-chat-app
 
+cubit-feature:
+	echo "Please give your new cubit a name:" ; \
+	read CUBIT_NAME ; \
+	mason make flutter_bloc_feature --name $$CUBIT_NAME --type cubit --style equatable --output-dir=lib/features ;
+
+test-coverage:
+	flutter test --coverage && \
+	genhtml coverage/lcov.info -o coverage/html && \
+	open coverage/html/index.html ;
+
+buildrunner:
+	dart run build_runner build --delete-conflicting-outputs
+
+# Quickly fix all formatting issues
+quickfix:
+	dart fix --apply ; \
+	dart analyze ;
 
 ## ------- Configure Firebase ------- ##
 # https://firebase.google.com/docs/flutter/setup?platform=android#configure-firebase
