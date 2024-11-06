@@ -22,6 +22,7 @@ build-runner:
 # Quickly fix all formatting issues
 quickfix:
 	dart fix --apply ; \
+	dart format lib test ; \
 	dart format --line-length 80 lib test ; \
 	flutter analyze lib test ;
 
