@@ -9,19 +9,28 @@ on:
     branches:
       - main
   pull_request:
-    branches:
-      - main
+    branches: [ '**' ]
+
 
 jobs:
   semantic-pull-request:
+    defaults:
+      run:
+        working-directory: ai_chat_app
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/semantic_pull_request.yml@v1
 
   build:
+    defaults:
+      run:
+        working-directory: ai_chat_app
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
 
   spell-check:
+    defaults:
+      run:
+        working-directory: ai_chat_app
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/spell_check.yml@v1
     with:
       includes: |
