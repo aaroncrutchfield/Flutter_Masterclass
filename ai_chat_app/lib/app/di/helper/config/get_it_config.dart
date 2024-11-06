@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 
+
 /// A blueprint for setting up your app's services and features.
 ///
 /// Think of this as a contract that says "any class that implements this
@@ -7,9 +8,12 @@ import 'package:get_it/get_it.dart';
 /// that says what needs to be done, but doesn't specify exactly how to do it.
 ///
 /// For example:
-/// - One implementation might set up services for development (while you're building features)
+/// - One implementation might set up services for development (while you're
+///   building features)
 /// - Another might set up services for testing (when running automated tests)
-/// - Both follow this blueprint but do things differently (like using fake data for tests)
+/// - Both follow this blueprint but do things differently (like using
+/// fake data for tests)
+// ignore: one_member_abstracts
 abstract interface class GetItConfig {
   /// Sets up all the important pieces your app needs.
   ///

@@ -5,9 +5,9 @@ import 'package:get_it/get_it.dart';
 
 /// A blueprint for managing app dependencies (like databases, services, etc.).
 ///
-/// Think of this as a container that holds all the important parts your app needs
-/// to work. It helps keep your code organized and makes it easier to change
-/// parts of your app without breaking others.
+/// Think of this as a container that holds all the important parts your app
+/// needs to work. It helps keep your code organized and makes it easier to
+/// change parts of your app without breaking others.
 abstract interface class DependencyRegistrySource {
   /// Sets up all the important parts your app needs.
   ///

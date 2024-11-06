@@ -4,7 +4,8 @@ import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDependencyRegistrySource extends Mock implements DependencyRegistrySource {}
+class MockDependencyRegistrySource extends Mock
+    implements DependencyRegistrySource {}
 
 void main() {
   group('GetItInjectionRepository', () {
@@ -26,20 +27,23 @@ void main() {
 
     test('getReturnsRegisteredInstance', () {
       final instance = Object();
-      when(() => mockDependencyRegistrySource.get<Object>()).thenReturn(instance);
+      when(() => mockDependencyRegistrySource.get<Object>())
+          .thenReturn(instance);
       final result = repository.get<Object>();
       expect(result, instance);
     });
 
     test('callReturnsRegisteredInstance', () {
       final instance = Object();
-      when(() => mockDependencyRegistrySource.call<Object>()).thenReturn(instance);
+      when(() => mockDependencyRegistrySource.call<Object>())
+          .thenReturn(instance);
       final result = repository.call<Object>();
       expect(result, instance);
     });
 
     test('resetCallsDependencyRegistrySourceReset', () {
-      when(() => mockDependencyRegistrySource.reset()).thenAnswer((_) async => Future.value());
+      when(() => mockDependencyRegistrySource.reset())
+          .thenAnswer((_) async => Future.value());
       repository.reset();
       verify(() => mockDependencyRegistrySource.reset()).called(1);
     });
