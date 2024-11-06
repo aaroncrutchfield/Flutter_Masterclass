@@ -25,7 +25,8 @@ class GetItAppConfig implements GetItConfig {
   Future<void> configureDependencies(
     String environment,
     GetIt getIt,
-  ) => _configureAppDependencies(getIt, environment);
+  ) =>
+      _configureAppDependencies(getIt, environment);
 }
 
 /// The function that actually sets up all app dependencies.

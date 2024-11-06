@@ -69,7 +69,8 @@ class GetItRegistrySource implements DependencyRegistrySource {
   @override
   Future<void> init(
     Environment environment,
-  ) => config.configureDependencies(environment.name, getIt);
+  ) =>
+      config.configureDependencies(environment.name, getIt);
 
   @override
   T get<T extends Object>() => getIt.get<T>();
@@ -83,5 +84,6 @@ class GetItRegistrySource implements DependencyRegistrySource {
   @override
   void register<T extends Object>(
     T Function() factoryFunction,
-  ) => getIt.registerFactory<T>(factoryFunction);
+  ) =>
+      getIt.registerFactory<T>(factoryFunction);
 }

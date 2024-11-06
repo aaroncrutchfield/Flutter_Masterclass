@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 
-
 /// A blueprint for setting up your app's services and features.
 ///
 /// Think of this as a contract that says "any class that implements this

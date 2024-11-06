@@ -5,8 +5,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 
-
 class MockGetIt extends Mock implements GetIt {}
+
 class MockGetItConfig extends Mock implements GetItConfig {}
 
 void main() {
@@ -26,9 +26,9 @@ void main() {
       when(() => mockConfig.configureDependencies(environment.name, mockGetIt))
           .thenAnswer((_) async => Future.value());
       await registrySource.init(environment);
-      verify(() =>
-              mockConfig.configureDependencies(environment.name, mockGetIt),)
-          .called(1);
+      verify(
+        () => mockConfig.configureDependencies(environment.name, mockGetIt),
+      ).called(1);
     });
 
     test('getReturnsRegisteredInstance', () {
