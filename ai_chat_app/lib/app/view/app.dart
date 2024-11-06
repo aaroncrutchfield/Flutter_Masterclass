@@ -1,13 +1,33 @@
-import 'package:ai_chat_app/counter/counter.dart';
+import 'package:ai_chat_app/app/di/helper/injection.dart';
+import 'package:ai_chat_app/app/navigation/app_navigation.dart';
+import 'package:ai_chat_app/app/navigation/app_navigation_provider.dart';
 import 'package:ai_chat_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class App extends StatelessWidget {
+
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return RepositoryProvider.value(
+      value: appRegistry<AppNavigation>(),
+      child: const AppView(),
+    );
+  }
+}
+
+class AppView extends StatelessWidget {
+  const AppView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final navigation = context.read<AppNavigation>();
+
+    return MaterialApp.router(
+      routerConfig: navigation.routerConfig(),
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -16,7 +36,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
     );
   }
 }
+
