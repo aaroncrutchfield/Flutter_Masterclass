@@ -1,13 +1,10 @@
 import 'package:ai_chat_app/app/di/helper/injection.dart';
 import 'package:ai_chat_app/app/navigation/app_navigation.dart';
-import 'package:ai_chat_app/app/navigation/app_navigation_provider.dart';
 import 'package:ai_chat_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class App extends StatelessWidget {
-
   const App({super.key});
 
   @override
@@ -39,4 +36,3 @@ class AppView extends StatelessWidget {
     );
   }
 }
-

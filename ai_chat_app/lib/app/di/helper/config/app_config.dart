@@ -15,22 +15,25 @@ import 'package:injectable/injectable.dart';
 class GetItAppConfig implements GetItConfig {
   /// Starts the setup process for all app dependencies.
   ///
-  /// [environment] tells us if we're running in development, staging, or production
-  /// [getIt] is our main container that will hold all the app's services
+  /// [environment] tells us if we're running in development, staging,
+  /// or production [getIt] is our main container that will hold all the
+  /// app's services
   ///
   /// This is like the master switch that starts the whole setup process.
   /// It uses _configureAppDependencies to do the actual work.
   @override
   Future<void> configureDependencies(
-      String environment,
-      GetIt getIt,
-      ) => _configureAppDependencies(getIt, environment);
+    String environment,
+    GetIt getIt,
+  ) =>
+      _configureAppDependencies(getIt, environment);
 }
 
 /// The function that actually sets up all app dependencies.
 ///
 /// @InjectableInit is like a magic wand that:
-/// - Looks through your code for special annotations (@injectable, @singleton, etc.)
+/// - Looks through your code for special annotations (@injectable,
+///   @singleton, etc.)
 /// - Creates all the necessary services automatically
 /// - Connects everything together in the right order
 ///
@@ -40,6 +43,7 @@ class GetItAppConfig implements GetItConfig {
 /// only GetItAppConfig can use it. This helps keep our code organized and safe.
 @InjectableInit(initializerName: 'init')
 Future<void> _configureAppDependencies(
-    GetIt getIt,
-    String environment,
-    ) async => getIt.init(environment: environment);
+  GetIt getIt,
+  String environment,
+) async =>
+    getIt.init(environment: environment);

@@ -11,7 +11,9 @@ void main() {
   bootstrap(
     builder: () async {
       WidgetsFlutterBinding.ensureInitialized();
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
       await appRegistry.init(Environment.development);
 
       return RepositoryProvider.value(

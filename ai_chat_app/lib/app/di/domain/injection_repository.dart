@@ -71,8 +71,8 @@ class GetItInjectionRepository implements InjectionRepository {
 
   @override
   Future<void> init(Environment environment) => dependencyRegistrySource.init(
-    environment,
-  );
+        environment,
+      );
 
   @override
   T get<T extends Object>() => dependencyRegistrySource.get<T>();

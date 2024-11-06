@@ -26,9 +26,10 @@ class GetItTestConfig implements GetItConfig {
   /// by calling _configureTestDependencies
   @override
   Future<void> configureDependencies(
-      String environment,
-      GetIt getIt,
-      ) => _configureTestDependencies(getIt, environment);
+    String environment,
+    GetIt getIt,
+  ) =>
+      _configureTestDependencies(getIt, environment);
 }
 
 /// The actual function that sets up test dependencies.
@@ -45,6 +46,7 @@ class GetItTestConfig implements GetItConfig {
 /// in the real app!
 @InjectableInit(initializerName: 'initTest', generateForDir: ['test'])
 Future<void> _configureTestDependencies(
-    GetIt getIt,
-    String environment,
-    ) async => getIt.initTest(environment: 'test');
+  GetIt getIt,
+  String environment,
+) async =>
+    getIt.initTest(environment: 'test');

@@ -14,6 +14,6 @@ class RootAutoRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(path: '/chat', page: CounterRoute.page, initial: true),
-  ];
+        AutoRoute(path: '/chat', page: CounterRoute.page, initial: true),
+      ];
 }

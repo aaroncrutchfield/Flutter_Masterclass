@@ -13,7 +13,6 @@ abstract interface class AppNavigation {
   Future<bool> maybePop<T extends Object?>([T? result]);
 }
 
-
 /// The implementation of the [AppNavigation] that uses the [RootAutoRouter].
 @Singleton(as: AppNavigation)
 class AutoRouteNavigation implements AppNavigation {

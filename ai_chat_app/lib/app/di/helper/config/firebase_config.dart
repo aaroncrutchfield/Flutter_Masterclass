@@ -5,9 +5,9 @@ import 'package:injectable/injectable.dart';
 
 /// The basic settings needed to connect to Firebase.
 ///
-/// Think of this as a template for storing important Firebase connection details
-/// like API keys and project IDs. Different environments (development, staging,
-/// production) will have their own specific settings.
+/// Think of this as a template for storing important Firebase connection
+/// details like API keys and project IDs. Different environments (development,
+/// staging, production) will have their own specific settings.
 abstract class FirebaseConfig {
   /// Gets the Firebase connection settings for the current environment.
   ///
@@ -35,12 +35,14 @@ class DevFirebaseConfig implements FirebaseConfig {
 /// Staging is like a dress rehearsal for production - it's where we test
 /// everything in a production-like environment before releasing to real users.
 ///
-/// Note: Currently shows an error because staging settings haven't been set up yet.
+/// Note: Currently shows an error because staging settings haven't been set
+/// up yet.
 @production
 @Singleton(as: FirebaseConfig)
 class StgFirebaseConfig implements FirebaseConfig {
   @override
-  FirebaseOptions get options => throw UnimplementedError('Staging options not implemented');
+  FirebaseOptions get options =>
+      throw UnimplementedError('Staging options not implemented');
 }
 
 /// Firebase settings for the production environment.
@@ -48,10 +50,12 @@ class StgFirebaseConfig implements FirebaseConfig {
 /// These are the real settings used when the app is released to users.
 /// This connects to the main Firebase project with real user data.
 ///
-/// Note: Currently shows an error because production settings haven't been set up yet.
+/// Note: Currently shows an error because production settings haven't been
+/// set up yet.
 @production
 @Singleton(as: FirebaseConfig)
 class ProdFirebaseConfig implements FirebaseConfig {
   @override
-  FirebaseOptions get options => throw UnimplementedError('Production options not implemented');
+  FirebaseOptions get options =>
+      throw UnimplementedError('Production options not implemented');
 }

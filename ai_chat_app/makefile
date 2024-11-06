@@ -22,7 +22,9 @@ build-runner:
 # Quickly fix all formatting issues
 quickfix:
 	dart fix --apply ; \
-	dart analyze ;
+	dart format lib test ; \
+	dart format --line-length 80 lib test ; \
+	flutter analyze lib test ;
 
 ## ------- Configure Firebase ------- ##
 # https://firebase.google.com/docs/flutter/setup?platform=android#configure-firebase
