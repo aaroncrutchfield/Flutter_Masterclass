@@ -45,9 +45,9 @@
     },
     {
       "name": "clock",
-      "rootUri": "file:///Users/acrutchfield/.pub-cache/hosted/pub.dev/clock-1.1.1",
+      "rootUri": "file:///Users/acrutchfield/.pub-cache/hosted/pub.dev/clock-1.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.4"
     },
     {
       "name": "collection",
@@ -260,10 +260,10 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-10-21T11:00:53.545403Z",
+  "generated": "2024-11-08T02:47:28.568457Z",
   "generator": "pub",
-  "generatorVersion": "3.5.0",
+  "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/acrutchfield/development/flutter",
-  "flutterVersion": "3.24.0",
+  "flutterVersion": "3.24.3",
   "pubCache": "file:///Users/acrutchfield/.pub-cache"
 }
