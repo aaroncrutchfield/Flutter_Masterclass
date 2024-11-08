@@ -1,2 +1,4 @@
 bricks:
   flutter_bloc_feature: ^0.3.2
+  dependency_injection:
+    path: bricks/dependency_injection
