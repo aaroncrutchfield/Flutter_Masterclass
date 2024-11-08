@@ -1,6 +1,8 @@
 // coverage:ignore-file
 
+import 'package:ai_chat_app/app/di/helper/config/firebase_config.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:injectable/injectable.dart';
 
@@ -13,7 +15,7 @@ import 'package:injectable/injectable.dart';
 ///
 /// @module tells the app this class provides important pieces we'll need later
 @module
-abstract class AppModule {
+abstract class FirebaseModule {
   /// Starts up Firebase with the right settings.
   ///
   /// This is marked with @preResolve because we need Firebase running
@@ -21,9 +23,10 @@ abstract class AppModule {
   /// the engine is running before trying to drive the car.
   ///
   /// Returns a FirebaseApp once everything is ready to use.
-  // @Singleton(order: 1)
-  // Future<FirebaseApp> getFirebase(FirebaseConfig config) =>
-  //     Firebase.initializeApp(options: config.options);
+
+  @preResolve
+  Future<FirebaseApp> getFirebase(FirebaseConfig config) =>
+      Firebase.initializeApp(options: config.options);
 
   /// Sets up the login/signup screens and features.
   ///
@@ -34,13 +37,9 @@ abstract class AppModule {
   ///
   /// @singleton means we only create one copy of this for the whole app
   /// (which saves memory and keeps things organized)
-  @Singleton()
-  FirebaseUIAuth get firebaseUIAuth {
-    // Tell Firebase what ways users can log in
-    // Right now we only allow email/password login
-    FirebaseUIAuth.configureProviders([
-      EmailAuthProvider(),
-    ]);
+  @singleton
+  FirebaseUIAuth getFirebaseUIAuth(FirebaseApp app) {
+    FirebaseUIAuth.configureProviders([EmailAuthProvider()], app: app);
     return FirebaseUIAuth();
   }
 
@@ -53,6 +52,7 @@ abstract class AppModule {
   ///
   /// @Singleton() means we use the same instance everywhere in the app
   /// to keep track of the user's login state
-  @Singleton()
-  auth.FirebaseAuth get firebaseAuth => auth.FirebaseAuth.instance;
+  @singleton
+  auth.FirebaseAuth getFirebaseAuth(FirebaseApp app) =>
+      auth.FirebaseAuth.instanceFor(app: app);
 }
