@@ -1,32 +1,32 @@
 # TODO update repository name and url to your own
 name: flutter_masterclass
-#repository: https://github.com/aaroncrutchfield/melos_single_app_projects.git
+repository: https://github.com/aaroncrutchfield/Flutter_Masterclass.git
 
 # TODO update packages to match your project structure
 packages:
   # Directory where all apps will live
   - ai_chat_app
-  - ai_chat_app/packages/**
+  - bricks/**
 
 categories:
   app:
     - ai_chat_app
-  packages:
-    - ai_chat_app/packages/**
+  bricks:
+    - bricks/**
 
 command:
   version:
     # Generate commit links in package changelogs.
-    linkToCommits: true
+#    linkToCommits: true
     # # Only allow versioning to happen on main branch.
     # branch: master
     # Additionally build a changelog at the root of the workspace.
     workspaceChangelog: true
     releaseUrl: true
-    message: |
-      chore: Cut app release 🎉
-      
-      {new_package_versions}
+#    message: |
+#      chore: Cut app release 🎉
+#
+#      {new_package_versions}
 
   bootstrap:
     # It seems so that running "pub get" in parallel has some issues (like
