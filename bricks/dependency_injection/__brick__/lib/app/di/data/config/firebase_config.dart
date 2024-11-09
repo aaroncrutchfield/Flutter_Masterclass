@@ -1,8 +1,7 @@
-import 'package:{{project_name}}/app/di/helper/annotations.dart';
+import 'package:{{project_name}}/app/di/data/annotations.dart';
 import 'package:{{project_name}}/firebase/firebase_options_dev.dart' as dev;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
-
 
 /// The basic settings needed to connect to Firebase.
 ///

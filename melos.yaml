@@ -4,7 +4,7 @@ repository: https://github.com/aaroncrutchfield/Flutter_Masterclass.git
 
 # TODO update packages to match your project structure
 packages:
-  # Directory where all apps will live
+  # Directory where the app will live
   - ai_chat_app
   - bricks/**
 
@@ -17,7 +17,7 @@ categories:
 command:
   version:
     # Generate commit links in package changelogs.
-#    linkToCommits: true
+    linkToCommits: true
     # # Only allow versioning to happen on main branch.
     # branch: master
     # Additionally build a changelog at the root of the workspace.

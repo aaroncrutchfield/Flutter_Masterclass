@@ -1,20 +1,19 @@
-import 'package:{{project_name}}/app/di/data/dependency_registry_source.dart';
-import 'package:{{project_name}}/app/di/domain/injection_repository.dart';
+import 'package:{{project_name}}/app/di/data/registry_source.dart';
+import 'package:{{project_name}}/app/di/domain/injection_registry.dart';
 import 'package:{{project_name}}/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDependencyRegistrySource extends Mock
-    implements DependencyRegistrySource {}
+class MockDependencyRegistrySource extends Mock implements RegistrySource {}
 
 void main() {
   group('GetItInjectionRepository', () {
-    late GetItInjectionRepository repository;
+    late InjectionRegistryImpl repository;
     late MockDependencyRegistrySource mockDependencyRegistrySource;
 
     setUp(() {
       mockDependencyRegistrySource = MockDependencyRegistrySource();
-      repository = GetItInjectionRepository(mockDependencyRegistrySource);
+      repository = InjectionRegistryImpl(mockDependencyRegistrySource);
     });
 
     test('initInitializesDependenciesCorrectly', () async {

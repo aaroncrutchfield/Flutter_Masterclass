@@ -1,5 +1,5 @@
-import 'package:{{project_name}}/app/di/data/dependency_registry_source.dart';
-import 'package:{{project_name}}/app/di/helper/config/get_it_config.dart';
+import 'package:{{project_name}}/app/di/data/config/get_it_config.dart';
+import 'package:{{project_name}}/app/di/data/registry_source.dart';
 import 'package:{{project_name}}/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
