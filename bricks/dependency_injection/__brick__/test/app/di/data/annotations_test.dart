@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/app/di/helper/annotations.dart' as config;
+import 'package:{{project_name}}/app/di/data/annotations.dart' as config;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

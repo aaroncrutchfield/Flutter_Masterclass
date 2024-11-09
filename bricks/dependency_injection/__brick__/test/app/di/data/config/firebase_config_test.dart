@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/app/di/helper/config/firebase_config.dart';
+import 'package:{{project_name}}/app/di/data/config/firebase_config.dart';
 import 'package:{{project_name}}/firebase/firebase_options_dev.dart' as dev;
 import 'package:flutter_test/flutter_test.dart';
 
