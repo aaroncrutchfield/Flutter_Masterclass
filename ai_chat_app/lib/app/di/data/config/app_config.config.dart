@@ -8,8 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:ai_chat_app/app/di/helper/config/firebase_config.dart' as _i745;
-import 'package:ai_chat_app/app/di/helper/firebase_module.dart' as _i667;
+import 'package:ai_chat_app/app/di/data/config/firebase_config.dart' as _i745;
+import 'package:ai_chat_app/app/di/data/firebase_module.dart' as _i667;
 import 'package:ai_chat_app/app/navigation/app_navigation.dart' as _i737;
 import 'package:ai_chat_app/app/navigation/auto_route/auto_router.dart'
     as _i848;

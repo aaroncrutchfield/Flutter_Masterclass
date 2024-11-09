@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/app/di/helper/annotations.dart' as config;
+import 'package:ai_chat_app/app/di/data/annotations.dart' as config;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

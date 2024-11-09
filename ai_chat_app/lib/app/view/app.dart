@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/app/di/helper/injection.dart';
+import 'package:ai_chat_app/app/di/domain/injection_registry.dart';
 import 'package:ai_chat_app/app/navigation/app_navigation.dart';
 import 'package:ai_chat_app/l10n/l10n.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:ai_chat_app/app/di/data/dependency_registry_source.dart';
-import 'package:ai_chat_app/app/di/helper/config/get_it_config.dart';
+import 'package:ai_chat_app/app/di/data/config/get_it_config.dart';
+import 'package:ai_chat_app/app/di/data/registry_source.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';

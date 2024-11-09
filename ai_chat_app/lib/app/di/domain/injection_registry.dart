@@ -1,6 +1,49 @@
-import 'package:ai_chat_app/app/di/data/dependency_registry_source.dart';
+import 'package:ai_chat_app/app/di/data/config/app_config.dart';
+import 'package:ai_chat_app/app/di/data/config/test_config.dart';
+import 'package:ai_chat_app/app/di/data/registry_source.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_it/get_it.dart';
+
+/// The main service manager for your real app.
+///
+/// Example:
+/// ```dart
+/// // Start up the app
+/// await appRegistry.init(Environment.development);
+///
+/// // Get a service you need
+/// final authService = appRegistry.get<AuthService>();
+/// ```
+// coverage:ignore-start
+final InjectionRegistry appRegistry = InjectionRegistryImpl(
+  GetItRegistrySource(GetIt.instance, GetItAppConfig()),
+);
+// coverage:ignore-end
+
+/// A special service manager just for testing.
+///
+/// This is the service manager you use when you're testing your app:
+/// - Uses fake/mock services instead of real ones
+/// - Doesn't connect to real APIs or databases
+/// - Lets you test without affecting real data
+///
+/// Example:
+/// ```dart
+/// // In your test file:
+/// void setUp() {
+///   // Start up the test version
+///   await testRegistry.init(Environment.test);
+/// }
+///
+/// test('login works', () {
+///   final authService = testRegistry.get<AuthService>();
+///   // Now you can test with fake data
+/// });
+/// ```
+final InjectionRegistry testRegistry = InjectionRegistryImpl(
+  GetItRegistrySource(GetIt.instance, GetItTestConfig()),
+);
 
 /// Main blueprint for managing app services and features.
 ///
@@ -12,7 +55,7 @@ import 'package:flutter/widgets.dart';
 ///
 /// This is the main way your app's different parts can get
 /// access to the things they need to work.
-abstract interface class InjectionRepository {
+abstract interface class InjectionRegistry {
   /// Gets everything ready to use.
   ///
   /// [environment] tells us if we're:
@@ -56,18 +99,18 @@ abstract interface class InjectionRepository {
 ///
 /// It uses DependencyRegistrySource (GetIt) to do the actual work,
 /// kind of like having a helpful assistant.
-class GetItInjectionRepository implements InjectionRepository {
+class InjectionRegistryImpl implements InjectionRegistry {
   /// Creates a new manager for our services.
   ///
   /// [dependencyRegistrySource] is like our assistant (GetIt)
   /// that does the actual work of storing and finding things.
-  const GetItInjectionRepository(this.dependencyRegistrySource);
+  const InjectionRegistryImpl(this.dependencyRegistrySource);
 
   /// Our helper that actually stores and manages services.
   ///
   /// Think of this as the actual shelves and drawers in our
   /// organized closet - it's where things really get stored.
-  final DependencyRegistrySource dependencyRegistrySource;
+  final RegistrySource dependencyRegistrySource;
 
   @override
   Future<void> init(Environment environment) => dependencyRegistrySource.init(

@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/app/di/helper/config/firebase_config.dart';
+import 'package:ai_chat_app/app/di/data/config/firebase_config.dart';
 import 'package:ai_chat_app/firebase/firebase_options_dev.dart' as dev;
 import 'package:flutter_test/flutter_test.dart';
 
