@@ -1,19 +1,13 @@
 // coverage:ignore-file
+// This file uses a static function. We cannot test it directly because it is
+// not a class.
 
-import 'package:ai_chat_app/app/di/helper/config/get_it_config.dart';
-import 'package:ai_chat_app/app/di/helper/config/test_config.config.dart';
+import 'package:ai_chat_app/app/di/data/config/get_it_config.dart';
+import 'package:ai_chat_app/app/di/data/config/test_config.config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-/// Special configuration for setting up your app in test mode.
-///
-/// Think of this as a "test mode" setup that:
-/// - Uses fake or mock services instead of real ones
-/// - Makes testing faster and more reliable
-/// - Prevents tests from touching real data or services
-///
-/// For example, instead of connecting to a real database,
-/// it might use a temporary in-memory database for tests.
+/// Uses GetIt to set up all the pieces your app needs to be tested.
 class GetItTestConfig implements GetItConfig {
   /// Sets up the app specifically for running tests.
   ///

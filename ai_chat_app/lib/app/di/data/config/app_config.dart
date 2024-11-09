@@ -1,17 +1,13 @@
 // coverage:ignore-file
+// This file uses a static function. We cannot test it directly because it is
+// not a class.
 
-import 'package:ai_chat_app/app/di/helper/config/app_config.config.dart';
-import 'package:ai_chat_app/app/di/helper/config/get_it_config.dart';
+import 'package:ai_chat_app/app/di/data/config/app_config.config.dart';
+import 'package:ai_chat_app/app/di/data/config/get_it_config.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
-/// Sets up all the pieces your app needs to run.
-///
-/// Think of this as the main setup coordinator for your app. It's like
-/// a checklist that makes sure everything is ready before the app starts:
-/// - Gets the right settings for your environment (dev, staging, prod)
-/// - Sets up all services (like Firebase, authentication, etc.)
-/// - Makes sure everything is connected properly
+/// Uses GetIt to set up all the pieces your app needs to run.
 class GetItAppConfig implements GetItConfig {
   /// Starts the setup process for all app dependencies.
   ///
@@ -31,8 +27,8 @@ class GetItAppConfig implements GetItConfig {
 
 /// The function that actually sets up all app dependencies.
 ///
-/// @InjectableInit is like a magic wand that:
-/// - Looks through your code for special annotations (@injectable,
+/// @InjectableInit is a special annotation that tells the app to:
+/// - Look through your code for other special annotations (@injectable,
 ///   @singleton, etc.)
 /// - Creates all the necessary services automatically
 /// - Connects everything together in the right order

@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/app/di/helper/annotations.dart';
+import 'package:ai_chat_app/app/di/data/annotations.dart';
 import 'package:ai_chat_app/firebase/firebase_options_dev.dart' as dev;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:injectable/injectable.dart';
