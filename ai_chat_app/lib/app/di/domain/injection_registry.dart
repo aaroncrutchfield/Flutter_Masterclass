@@ -16,7 +16,7 @@ import 'package:get_it/get_it.dart';
 /// final authService = appRegistry.get<AuthService>();
 /// ```
 // coverage:ignore-start
-final InjectionRegistry appRegistry = InjectionRegistryImpl(
+final InjectionRegistry appRegistry = GetItInjectionRegistry(
   GetItRegistrySource(GetIt.instance, GetItAppConfig()),
 );
 // coverage:ignore-end
@@ -41,94 +41,70 @@ final InjectionRegistry appRegistry = InjectionRegistryImpl(
 ///   // Now you can test with fake data
 /// });
 /// ```
-final InjectionRegistry testRegistry = InjectionRegistryImpl(
+final InjectionRegistry testRegistry = GetItInjectionRegistry(
   GetItRegistrySource(GetIt.instance, GetItTestConfig()),
 );
 
-/// Main blueprint for managing app services and features.
+/// A blueprint for managing app dependencies (like databases, services, etc.).
 ///
-/// Think of this as a super-organized closet where all your app's
-/// important pieces are stored and managed. It helps you:
-/// - Start up services (like databases or login)
-/// - Find and use services when needed
-/// - Clean up services when you're done
-///
-/// This is the main way your app's different parts can get
-/// access to the things they need to work.
+/// Think of this as a container that holds all the important parts your app
+/// needs to work. It helps keep your code organized and makes it easier to
+/// change parts of your app without breaking others.
 abstract interface class InjectionRegistry {
-  /// Gets everything ready to use.
+  /// Sets up all the important parts your app needs.
   ///
-  /// [environment] tells us if we're:
-  /// - Building new features (development)
-  /// - Running tests (test)
-  /// - Getting ready for release (staging)
+  /// [environment] tells the app whether it's running in development,
+  /// testing, or production mode. This helps configure things differently
+  /// based on where the app is running.
   Future<void> init(Environment environment);
 
-  /// Finds and returns a service your app needs.
+  /// Gets something your app needs (like a database connection or service).
   ///
   /// Example:
   /// ```dart
-  /// // Get the database service
-  /// final database = repository.get<Database>();
+  /// final database = registry.get<Database>();
   /// ```
   T get<T extends Object>();
 
-  /// Works just like [get] but with shorter code.
+  /// Works just like [get], but lets you use shorter code.
   ///
-  /// Instead of writing repository.get<Database>(),
-  /// you can write repository<Database>()
-  /// It's just a shortcut for the same thing!
+  /// Instead of writing registry.get<Database>(),
+  /// you can write registry<Database>()
   T call<T extends Object>();
 
-  /// Cleans up all services.
-  ///
-  /// Like cleaning out the closet - removes everything
-  /// so you can start fresh. Be careful with this!
+  /// Removes all registered dependencies from the container.
   void reset();
 
-  @visibleForTesting
   void register<T extends Object>(T Function() factoryFunction);
 }
 
-/// The actual implementation that uses GetIt to manage everything.
-///
-/// This is like the manager of our organized closet. It knows:
-/// - Where everything is stored
-/// - How to get things when needed
-/// - How to keep everything organized
-///
-/// It uses DependencyRegistrySource (GetIt) to do the actual work,
-/// kind of like having a helpful assistant.
-class InjectionRegistryImpl implements InjectionRegistry {
+/// The main implementation of our service manager.
+class GetItInjectionRegistry implements InjectionRegistry {
   /// Creates a new manager for our services.
   ///
-  /// [dependencyRegistrySource] is like our assistant (GetIt)
+  /// [registrySource] is the source containing our dependencies (GetIt)
   /// that does the actual work of storing and finding things.
-  const InjectionRegistryImpl(this.dependencyRegistrySource);
+  const GetItInjectionRegistry(this.registrySource);
 
-  /// Our helper that actually stores and manages services.
-  ///
-  /// Think of this as the actual shelves and drawers in our
-  /// organized closet - it's where things really get stored.
-  final RegistrySource dependencyRegistrySource;
+  final GetItRegistrySource registrySource;
 
   @override
-  Future<void> init(Environment environment) => dependencyRegistrySource.init(
+  Future<void> init(Environment environment) => registrySource.init(
         environment,
       );
 
   @override
-  T get<T extends Object>() => dependencyRegistrySource.get<T>();
+  T get<T extends Object>() => registrySource.get<T>();
 
   @override
-  void reset() => dependencyRegistrySource.reset();
+  void reset() => registrySource.reset();
 
   @override
-  T call<T extends Object>() => dependencyRegistrySource.call<T>();
+  T call<T extends Object>() => registrySource.call<T>();
 
   @override
   @visibleForTesting
   void register<T extends Object>(T Function() factoryFunction) {
-    dependencyRegistrySource.register(factoryFunction);
+    registrySource.register(factoryFunction);
   }
 }
