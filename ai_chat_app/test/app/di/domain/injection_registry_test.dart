@@ -4,16 +4,16 @@ import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDependencyRegistrySource extends Mock implements RegistrySource {}
+class MockGetItRegistrySource extends Mock implements GetItRegistrySource {}
 
 void main() {
   group('GetItInjectionRepository', () {
-    late InjectionRegistryImpl repository;
-    late MockDependencyRegistrySource mockDependencyRegistrySource;
+    late GetItInjectionRegistry repository;
+    late MockGetItRegistrySource mockDependencyRegistrySource;
 
     setUp(() {
-      mockDependencyRegistrySource = MockDependencyRegistrySource();
-      repository = InjectionRegistryImpl(mockDependencyRegistrySource);
+      mockDependencyRegistrySource = MockGetItRegistrySource();
+      repository = GetItInjectionRegistry(mockDependencyRegistrySource);
     });
 
     test('initInitializesDependenciesCorrectly', () async {
