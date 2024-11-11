@@ -139,8 +139,7 @@ void main() {
     group('register', () {
       test(
           'should delegate to registrySource.register '
-              'with correct factory function',
-          () {
+          'with correct factory function', () {
         // Arrange
         String factoryFunction() => 'test';
         when(() => mockRegistrySource.register<String>(any())).thenReturn(null);

@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 class MockRootAutoRouter extends Mock implements RootAutoRouter {}
+
 class MockRouterConfig extends Mock implements RouterConfig<UrlState> {}
 
 void main() {
@@ -34,7 +35,8 @@ void main() {
     });
 
     group('navigateNamed', () {
-      test('should delegate to RootAutoRouter.navigateNamed with correct name', () async {
+      test('should delegate to RootAutoRouter.navigateNamed with correct name',
+          () async {
         // Arrange
         const routeName = '/test-route';
         when(() => mockRouter.navigateNamed(routeName))
@@ -59,7 +61,8 @@ void main() {
     });
 
     group('pushNamed', () {
-      test('should delegate to RootAutoRouter.pushNamed with correct name', () async {
+      test('should delegate to RootAutoRouter.pushNamed with correct name',
+          () async {
         // Arrange
         const routeName = '/test-route';
         const expectedResult = 'result';
@@ -100,7 +103,8 @@ void main() {
     });
 
     group('maybePop', () {
-      test('should delegate to RootAutoRouter.maybePop without result', () async {
+      test('should delegate to RootAutoRouter.maybePop without result',
+          () async {
         // Arrange
         when(() => mockRouter.maybePop<void>())
             .thenAnswer((_) => Future.value(true));
