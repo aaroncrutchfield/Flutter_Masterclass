@@ -64,13 +64,19 @@ abstract interface class InjectionRegistry {
   /// ```dart
   /// final database = registry.get<Database>();
   /// ```
-  T get<T extends Object>();
+  T get<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  });
 
   /// Works just like [get], but lets you use shorter code.
   ///
   /// Instead of writing registry.get<Database>(),
   /// you can write registry<Database>()
-  T call<T extends Object>();
+  T call<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  });
 
   /// Removes all registered dependencies from the container.
   void reset();
@@ -94,13 +100,21 @@ class GetItInjectionRegistry implements InjectionRegistry {
   );
 
   @override
-  T get<T extends Object>() => registrySource.get<T>();
+  T get<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  }) =>
+      registrySource.get<T>(param1: param1, param2: param2);
 
   @override
   void reset() => registrySource.reset();
 
   @override
-  T call<T extends Object>() => registrySource.call<T>();
+  T call<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  }) =>
+      registrySource.call<T>(param1: param1, param2: param2);
 
   @override
   @visibleForTesting
