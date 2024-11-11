@@ -1,10 +1,10 @@
-import 'package:ai_chat_app/app/navigation/auto_route/auto_router.dart';
+import 'package:ai_chat_app/app/navigation/data/auto_route/auto_router.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 /// The router for the app.
 abstract interface class AppNavigation {
-  RouterConfig<Object> routerConfig();
+  RouterConfig<Object>? routerConfig();
 
   Future<void> navigateNamed(String name);
 
