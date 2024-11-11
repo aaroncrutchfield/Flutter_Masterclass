@@ -15,15 +15,25 @@ class GetItRegistrySource {
 
   Future<void> init(
     Environment environment,
-  ) => _config.configureDependencies(environment.name, _getIt);
+  ) =>
+      _config.configureDependencies(environment.name, _getIt);
 
-  T get<T extends Object>() => _getIt.get<T>();
+  T get<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  }) =>
+      _getIt.get<T>(param1: param1, param2: param2);
 
   void reset() => _getIt.reset();
 
-  T call<T extends Object>() => _getIt.call<T>();
+  T call<T extends Object>({
+    dynamic param1,
+    dynamic param2,
+  }) =>
+      _getIt.call<T>(param1: param1, param2: param2);
 
   void register<T extends Object>(
     T Function() factoryFunction,
-  ) => _getIt.registerFactory<T>(factoryFunction);
+  ) =>
+      _getIt.registerFactory<T>(factoryFunction);
 }
