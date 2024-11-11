@@ -89,7 +89,8 @@ void main() {
     });
 
     test(
-        'register should delegate to GetIt registerFactory with correct function',
+        'register should delegate to GetIt registerFactory '
+            'with correct function',
         () {
       // Arrange
       String factoryFunction() => 'test';
