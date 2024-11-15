@@ -39,7 +39,6 @@ abstract interface class InjectionRegistry {
   /// Registers a factory function for type [T].
   ///
   /// Only available for testing purposes.
-  @visibleForTesting
   void register<T extends Object>(T Function() factoryFunction);
 }
 
@@ -53,8 +52,8 @@ class GetItInjectionRegistry implements InjectionRegistry {
 
   @override
   Future<void> init(Environment environment) => registrySource.init(
-    environment,
-  );
+        environment,
+      );
 
   @override
   T get<T extends Object>({

@@ -12,9 +12,9 @@ class InjectableConfig {
   ///
   /// [getIt] The GetIt instance to configure.
   Future<void> configureDependencies(
-      String environment,
-      GetIt getIt,
-      ) =>
+    String environment,
+    GetIt getIt,
+  ) =>
       _configureAppDependencies(getIt, environment);
 }
 
@@ -25,7 +25,7 @@ class InjectableConfig {
 /// [environment] The environment to initialize dependencies for.
 @InjectableInit(initializerName: 'init')
 Future<void> _configureAppDependencies(
-    GetIt getIt,
-    String environment,
-    ) async =>
+  GetIt getIt,
+  String environment,
+) async =>
     getIt.init(environment: environment);

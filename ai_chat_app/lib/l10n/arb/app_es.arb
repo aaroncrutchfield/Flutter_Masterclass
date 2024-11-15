@@ -3,5 +3,9 @@
     "counterAppBarTitle": "Contador",
     "@counterAppBarTitle": {
         "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "chatGreeting": "¿En qué puedo ayudarte?",
+    "@chatGreeting": {
+        "description": "Mensaje de saludo mostrado en el chat"
     }
 }
