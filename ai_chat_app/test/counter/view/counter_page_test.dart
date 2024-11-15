@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/counter/counter.dart';
+import 'package:ai_chat_app/features/counter/counter.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

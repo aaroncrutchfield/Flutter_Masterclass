@@ -1,5 +1,5 @@
 import 'package:ai_chat_app/app/di/data/registry_source.dart';
-import 'package:ai_chat_app/app/di/domain/injection_registry.dart';
+import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
