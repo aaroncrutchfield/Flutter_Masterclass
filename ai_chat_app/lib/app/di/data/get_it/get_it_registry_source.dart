@@ -45,7 +45,7 @@ class GetItRegistrySource {
   ///
   /// [factoryFunction] The function that creates instances of [T].
   void register<T extends Object>(
-      T Function() factoryFunction,
-      ) =>
+    T Function() factoryFunction,
+  ) =>
       _getIt.registerFactory<T>(factoryFunction);
 }

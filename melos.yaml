@@ -7,12 +7,16 @@ packages:
   # Directory where the app will live
   - ai_chat_app
   - bricks/**
+  - ai_chat_app/widgetbook
 
 categories:
   app:
     - ai_chat_app
   bricks:
     - bricks/**
+  widgetbook:
+    - ai_chat_app/widgetbook
+
 
 command:
   version:
@@ -29,6 +33,8 @@ command:
 #      {new_package_versions}
 
   bootstrap:
+    hooks:
+      post: melos build-runner
     # It seems so that running "pub get" in parallel has some issues (like
     # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
     # makes the CI much more stable.
@@ -39,6 +45,9 @@ command:
       sdk: ^3.5.0
 
 scripts:
+  build-runner:
+    run: melos exec --depends-on="build_runner" dart run build_runner build --delete-conflicting-outputs
+    description: Run `build_runner build` in all packages.
   test:selective_unit_test:
     run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage
     description: Run Flutter tests for a specific package in this project.

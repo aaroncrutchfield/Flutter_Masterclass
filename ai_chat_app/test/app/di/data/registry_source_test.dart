@@ -1,5 +1,5 @@
-import 'package:ai_chat_app/app/di/data/injectable/injectable_config.dart';
 import 'package:ai_chat_app/app/di/data/get_it/get_it_registry_source.dart';
+import 'package:ai_chat_app/app/di/data/injectable/injectable_config.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
@@ -90,8 +90,7 @@ void main() {
 
     test(
         'register should delegate to GetIt registerFactory '
-            'with correct function',
-        () {
+        'with correct function', () {
       // Arrange
       String factoryFunction() => 'test';
       when(() => mockGetIt.registerFactory<String>(any())).thenReturn(null);

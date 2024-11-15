@@ -1,6 +1,6 @@
+import 'package:ai_chat_app/core/auth/auth_repository.dart';
 import 'package:ai_chat_app/core/auth/data/auth_remote_data_source.dart';
 import 'package:ai_chat_app/core/auth/data/auth_user_model.dart';
-import 'package:ai_chat_app/core/auth/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
