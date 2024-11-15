@@ -1,103 +1,60 @@
-import 'package:ai_chat_app/app/di/data/config/app_config.dart';
-import 'package:ai_chat_app/app/di/data/config/test_config.dart';
-import 'package:ai_chat_app/app/di/data/registry_source.dart';
+import 'package:ai_chat_app/app/di/data/get_it/get_it_registry_source.dart';
+import 'package:ai_chat_app/app/di/data/injectable/injectable_config.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 
-/// The main service manager for your real app.
-///
-/// Example:
-/// ```dart
-/// // Start up the app
-/// await appRegistry.init(Environment.development);
-///
-/// // Get a service you need
-/// final authService = appRegistry.get<AuthService>();
-/// ```
+/// Global instance of the dependency injection registry.
+/// Ignored for code coverage.
 // coverage:ignore-start
 final InjectionRegistry appRegistry = GetItInjectionRegistry(
-  GetItRegistrySource(GetIt.instance, GetItAppConfig()),
+  GetItRegistrySource(GetIt.instance, InjectableConfig()),
 );
 // coverage:ignore-end
 
-/// A special service manager just for testing.
-///
-/// This is the service manager you use when you're testing your app:
-/// - Uses fake/mock services instead of real ones
-/// - Doesn't connect to real APIs or databases
-/// - Lets you test without affecting real data
-///
-/// Example:
-/// ```dart
-/// // In your test file:
-/// void setUp() {
-///   // Start up the test version
-///   await testRegistry.init(Environment.test);
-/// }
-///
-/// test('login works', () {
-///   final authService = testRegistry.get<AuthService>();
-///   // Now you can test with fake data
-/// });
-/// ```
-final InjectionRegistry testRegistry = GetItInjectionRegistry(
-  GetItRegistrySource(GetIt.instance, GetItTestConfig()),
-);
-
-/// A blueprint for managing app dependencies (like databases, services, etc.).
-///
-/// Think of this as a container that holds all the important parts your app
-/// needs to work. It helps keep your code organized and makes it easier to
-/// change parts of your app without breaking others.
+/// Interface for managing dependency injection in the application.
 abstract interface class InjectionRegistry {
-  /// Sets up all the important parts your app needs.
-  ///
-  /// [environment] tells the app whether it's running in development,
-  /// testing, or production mode. This helps configure things differently
-  /// based on where the app is running.
+  /// Initializes the dependency injection container for the given environment.
   Future<void> init(Environment environment);
 
-  /// Gets something your app needs (like a database connection or service).
+  /// Retrieves a dependency of type [T] from the container.
   ///
-  /// Example:
-  /// ```dart
-  /// final database = registry.get<Database>();
-  /// ```
+  /// Optional [param1] and [param2] can be passed for factory functions.
   T get<T extends Object>({
     dynamic param1,
     dynamic param2,
   });
 
-  /// Works just like [get], but lets you use shorter code.
+  /// Shorthand operator for retrieving dependencies.
   ///
-  /// Instead of writing registry.get<Database>(),
-  /// you can write registry<Database>()
+  /// Functions identically to [get].
   T call<T extends Object>({
     dynamic param1,
     dynamic param2,
   });
 
-  /// Removes all registered dependencies from the container.
+  /// Resets the dependency container to its initial state.
   void reset();
 
+  /// Registers a factory function for type [T].
+  ///
+  /// Only available for testing purposes.
+  @visibleForTesting
   void register<T extends Object>(T Function() factoryFunction);
 }
 
-/// The main implementation of our service manager.
+/// Implementation of [InjectionRegistry] using GetIt for dependency injection.
 class GetItInjectionRegistry implements InjectionRegistry {
-  /// Creates a new manager for our services.
-  ///
-  /// [registrySource] is the source containing our dependencies (GetIt)
-  /// that does the actual work of storing and finding things.
+  /// Creates a new instance with the provided registry source.
   const GetItInjectionRegistry(this.registrySource);
 
+  /// The underlying source for registry operations.
   final GetItRegistrySource registrySource;
 
   @override
   Future<void> init(Environment environment) => registrySource.init(
-        environment,
-      );
+    environment,
+  );
 
   @override
   T get<T extends Object>({

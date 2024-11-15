@@ -1,4 +1,4 @@
-import 'package:ai_chat_app/app/di/data/registry_source.dart';
+import 'package:ai_chat_app/app/di/data/get_it/get_it_registry_source.dart';
 import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -168,10 +168,6 @@ void main() {
     group('global instances', () {
       test('appRegistry should be initialized with GetItAppConfig', () {
         expect(appRegistry, isA<GetItInjectionRegistry>());
-      });
-
-      test('testRegistry should be initialized with GetItTestConfig', () {
-        expect(testRegistry, isA<GetItInjectionRegistry>());
       });
     });
   });
