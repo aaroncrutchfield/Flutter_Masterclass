@@ -5,6 +5,7 @@ import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -30,6 +31,7 @@ Future<void> bootstrap({
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   WidgetsFlutterBinding.ensureInitialized();
+  setUrlStrategy(PathUrlStrategy());
 
   await appRegistry.init(environment);
   Bloc.observer = const AppBlocObserver();
