@@ -22,10 +22,10 @@ void main() {
       setFirebaseUiIsTestMode(true);
       mockFirebaseAuth = MockFirebaseAuth();
       when(() => mockFirebaseAuth.app).thenReturn(MockFirebaseApp());
-      testRegistry.register(() => mockFirebaseAuth);
+      appRegistry.register(() => mockFirebaseAuth);
     });
 
-    tearDown(testRegistry.reset);
+    tearDown(appRegistry.reset);
 
     testWidgets('renders AuthPage', (tester) async {
       await tester.pumpApp(const AuthPage());

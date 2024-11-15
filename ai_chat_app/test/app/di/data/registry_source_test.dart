@@ -1,5 +1,5 @@
-import 'package:ai_chat_app/app/di/data/config/get_it_config.dart';
-import 'package:ai_chat_app/app/di/data/registry_source.dart';
+import 'package:ai_chat_app/app/di/data/injectable/injectable_config.dart';
+import 'package:ai_chat_app/app/di/data/get_it/get_it_registry_source.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 
 class MockGetIt extends Mock implements GetIt {}
 
-class MockGetItConfig extends Mock implements GetItConfig {}
+class MockGetItConfig extends Mock implements InjectableConfig {}
 
 void main() {
   late GetItRegistrySource sut;

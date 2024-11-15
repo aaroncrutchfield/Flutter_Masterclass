@@ -8,7 +8,8 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:ai_chat_app/app/di/data/firebase_module.dart' as _i792;
+import 'package:ai_chat_app/app/di/data/injectable/firebase_module.dart'
+    as _i22;
 import 'package:ai_chat_app/app/navigation/app_navigation.dart' as _i737;
 import 'package:ai_chat_app/app/navigation/data/auto_route/auto_router.dart'
     as _i817;
@@ -81,4 +82,4 @@ extension GetItInjectableX on _i174.GetIt {
   }
 }
 
-class _$FirebaseModule extends _i792.FirebaseModule {}
+class _$FirebaseModule extends _i22.FirebaseModule {}

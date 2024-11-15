@@ -1,39 +1,42 @@
 // coverage:ignore-file
 
-import 'package:ai_chat_app/app/di/data/annotations.dart';
+import 'package:ai_chat_app/app/di/data/injectable/annotations.dart';
 import 'package:ai_chat_app/firebase/firebase_options_dev.dart' as dev;
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:injectable/injectable.dart';
 
-/// The setup class for firebase app services.
+/// Module that provides Firebase-related dependencies with
+/// environment-specific configurations.
 ///
-/// @module tells the app this class provides important pieces that we define
-/// ourselves
+/// This module is ignored for code coverage purposes.
 @module
 abstract class FirebaseModule {
+  /// Provides Firebase options for the development environment.
   @development
   @singleton
   FirebaseOptions getDevOptions() => dev.DefaultFirebaseOptions.currentPlatform;
 
+  /// Provides Firebase options for the staging environment.
+  ///
+  /// Currently unimplemented and throws [UnimplementedError].
   @staging
   @singleton
   FirebaseOptions getStgOptions() =>
       throw UnimplementedError('Staging options not implemented');
 
+  /// Provides Firebase options for the production environment.
+  ///
+  /// Currently unimplemented and throws [UnimplementedError].
   @production
   @singleton
   FirebaseOptions getProdOptions() =>
       throw UnimplementedError('Production options not implemented');
 
-  /// Starts up Firebase with the right settings.
+  /// Initializes Firebase with the provided options.
   ///
-  /// [FirebaseConfig] is a class that holds the settings for Firebase
-  /// based on the environment (development, staging, production).
-  ///
-  /// This is marked with @preResolve because we need Firebase initialized
-  /// before we can use it in other parts of the app.
+  /// Used across all environments (development, staging, production).
   @development
   @staging
   @production
@@ -41,18 +44,16 @@ abstract class FirebaseModule {
   Future<FirebaseApp> getFirebase(FirebaseOptions options) =>
       Firebase.initializeApp(options: options);
 
-  /// Sets up the Firebase login/signup screens and features.
+  /// Configures and provides FirebaseUIAuth instance.
   ///
-  /// @singleton means we only create one copy of this for the whole app
+  /// Sets up email authentication provider for the given Firebase app.
   @singleton
   FirebaseUIAuth getFirebaseUIAuth(FirebaseApp app) {
     FirebaseUIAuth.configureProviders([EmailAuthProvider()], app: app);
     return FirebaseUIAuth();
   }
 
-  /// Gets the main Firebase authentication service.
-  ///
-  /// @singleton means we only create one copy of this for the whole app
+  /// Provides Firebase Authentication instance for the given Firebase app.
   @singleton
   auth.FirebaseAuth getFirebaseAuth(FirebaseApp app) =>
       auth.FirebaseAuth.instanceFor(app: app);
