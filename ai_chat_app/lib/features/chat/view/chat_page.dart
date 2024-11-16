@@ -1,4 +1,5 @@
 import 'package:ai_chat_app/features/chat/chat.dart';
+import 'package:ai_chat_app/features/chat/widget/chat_app_bar.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +24,8 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChatCubit, ChatState>(
       builder: (context, state) {
-        return const Scaffold(
+        return Scaffold(
+          appBar: ChatAppBar(),
           body: Column(
             children: [
               Expanded(
