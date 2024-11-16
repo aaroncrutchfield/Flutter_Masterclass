@@ -12,7 +12,6 @@ class MockCounterCubit extends MockCubit<int> implements CounterCubit {}
 
 void main() {
   group('CounterPage', () {
-
     setUp(() {
       final CounterCubit cubit = MockCounterCubit();
       when(() => cubit.state).thenReturn(0);

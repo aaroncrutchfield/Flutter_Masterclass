@@ -11,6 +11,11 @@ cubit-feature:
 	read CUBIT_NAME ; \
 	mason make flutter_bloc_feature --name $$CUBIT_NAME --type cubit --style equatable --output-dir=lib/features ;
 
+bloc-feature:
+	echo "Please give your new bloc a name:" ; \
+	read BLOC_NAME ; \
+	mason make flutter_bloc_feature --name $$BLOC_NAME --type bloc --style equatable --output-dir=lib/features ;
+
 test-coverage:
 	flutter test --coverage && \
 	genhtml coverage/lcov.info -o coverage/html && \

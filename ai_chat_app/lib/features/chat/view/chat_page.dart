@@ -1,3 +1,4 @@
+import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/features/chat/chat.dart';
 import 'package:ai_chat_app/features/chat/widget/chat_app_bar.dart';
 import 'package:auto_route/auto_route.dart';
@@ -11,7 +12,7 @@ class ChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ChatCubit(),
+      create: (_) => appRegistry.get<ChatBloc>(),
       child: const ChatView(),
     );
   }
@@ -22,7 +23,7 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ChatCubit, ChatState>(
+    return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return const Scaffold(
           appBar: ChatAppBar(),

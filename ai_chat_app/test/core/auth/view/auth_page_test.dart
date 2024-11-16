@@ -31,8 +31,7 @@ void main() {
       when(() => mockAuthCubit.state).thenReturn(AuthInitial());
       when(() => mockAuthCubit.stream)
           .thenAnswer((_) => Stream.value(AuthInitial()));
-      when(() => mockAuthCubit.close())
-          .thenAnswer((_) => Future.value());
+      when(() => mockAuthCubit.close()).thenAnswer((_) => Future.value());
 
       appRegistry
         ..register(() => mockFirebaseAuth)
