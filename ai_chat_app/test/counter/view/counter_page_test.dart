@@ -1,3 +1,4 @@
+import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/features/counter/counter.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,15 @@ class MockCounterCubit extends MockCubit<int> implements CounterCubit {}
 
 void main() {
   group('CounterPage', () {
+
+    setUp(() {
+      final CounterCubit cubit = MockCounterCubit();
+      when(() => cubit.state).thenReturn(0);
+      appRegistry.register<CounterCubit>(() => cubit);
+    });
+
+    tearDown(appRegistry.reset);
+
     testWidgets('renders CounterView', (tester) async {
       await tester.pumpApp(const CounterPage());
       expect(find.byType(CounterView), findsOneWidget);
