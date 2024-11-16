@@ -1,5 +1,5 @@
-import 'package:{{project_name}}/app/di/data/registry_source.dart';
-import 'package:{{project_name}}/app/di/domain/injection_registry.dart';
+import 'package:{{project_name}}/app/di/data/get_it/get_it_registry_source.dart';
+import 'package:{{project_name}}/app/di/injection_registry.dart';
 import 'package:{{project_name}}/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -18,18 +18,18 @@ void main() {
 
     group('init', () {
       test('should delegate to registrySource.init with correct environment',
-              () async {
-            // Arrange
-            const environment = Environment.development;
-            when(() => mockRegistrySource.init(environment))
-                .thenAnswer((_) async => {});
+          () async {
+        // Arrange
+        const environment = Environment.development;
+        when(() => mockRegistrySource.init(environment))
+            .thenAnswer((_) async => {});
 
-            // Act
-            await sut.init(environment);
+        // Act
+        await sut.init(environment);
 
-            // Assert
-            verify(() => mockRegistrySource.init(environment)).called(1);
-          });
+        // Assert
+        verify(() => mockRegistrySource.init(environment)).called(1);
+      });
 
       test('should propagate errors from registrySource.init', () async {
         // Arrange
@@ -49,7 +49,7 @@ void main() {
         const param2 = 'test2';
         const expectedValue = 'result';
         when(
-              () => mockRegistrySource.get<String>(
+          () => mockRegistrySource.get<String>(
             param1: param1,
             param2: param2,
           ),
@@ -61,7 +61,7 @@ void main() {
         // Assert
         expect(result, expectedValue);
         verify(
-              () => mockRegistrySource.get<String>(
+          () => mockRegistrySource.get<String>(
             param1: param1,
             param2: param2,
           ),
@@ -84,30 +84,30 @@ void main() {
 
     group('call', () {
       test('should delegate to registrySource.call with correct parameters',
-              () {
-            // Arrange
-            const param1 = 'test1';
-            const param2 = 'test2';
-            const expectedValue = 'result';
-            when(
-                  () => mockRegistrySource.call<String>(
-                param1: param1,
-                param2: param2,
-              ),
-            ).thenReturn(expectedValue);
+          () {
+        // Arrange
+        const param1 = 'test1';
+        const param2 = 'test2';
+        const expectedValue = 'result';
+        when(
+          () => mockRegistrySource.call<String>(
+            param1: param1,
+            param2: param2,
+          ),
+        ).thenReturn(expectedValue);
 
-            // Act
-            final result = sut<String>(param1: param1, param2: param2);
+        // Act
+        final result = sut<String>(param1: param1, param2: param2);
 
-            // Assert
-            expect(result, expectedValue);
-            verify(
-                  () => mockRegistrySource.call<String>(
-                param1: param1,
-                param2: param2,
-              ),
-            ).called(1);
-          });
+        // Assert
+        expect(result, expectedValue);
+        verify(
+          () => mockRegistrySource.call<String>(
+            param1: param1,
+            param2: param2,
+          ),
+        ).called(1);
+      });
 
       test('should work without parameters', () {
         // Arrange
@@ -139,18 +139,17 @@ void main() {
     group('register', () {
       test(
           'should delegate to registrySource.register '
-              'with correct factory function',
-              () {
-            // Arrange
-            String factoryFunction() => 'test';
-            when(() => mockRegistrySource.register<String>(any())).thenReturn(null);
+          'with correct factory function', () {
+        // Arrange
+        String factoryFunction() => 'test';
+        when(() => mockRegistrySource.register<String>(any())).thenReturn(null);
 
-            // Act
-            sut.register<String>(factoryFunction);
+        // Act
+        sut.register<String>(factoryFunction);
 
-            // Assert
-            verify(() => mockRegistrySource.register<String>(any())).called(1);
-          });
+        // Assert
+        verify(() => mockRegistrySource.register<String>(any())).called(1);
+      });
 
       test('should propagate registration errors', () {
         // Arrange
@@ -160,7 +159,7 @@ void main() {
 
         // Act & Assert
         expect(
-              () => sut.register<String>(factoryFunction),
+          () => sut.register<String>(factoryFunction),
           throwsA(equals(error)),
         );
       });
@@ -169,10 +168,6 @@ void main() {
     group('global instances', () {
       test('appRegistry should be initialized with GetItAppConfig', () {
         expect(appRegistry, isA<GetItInjectionRegistry>());
-      });
-
-      test('testRegistry should be initialized with GetItTestConfig', () {
-        expect(testRegistry, isA<GetItInjectionRegistry>());
       });
     });
   });

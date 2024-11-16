@@ -1,5 +1,5 @@
-import 'package:{{project_name}}/app/di/data/config/get_it_config.dart';
-import 'package:{{project_name}}/app/di/data/registry_source.dart';
+import 'package:{{project_name}}/app/di/data/get_it/get_it_registry_source.dart';
+import 'package:{{project_name}}/app/di/data/injectable/injectable_config.dart';
 import 'package:{{project_name}}/app/environments.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
@@ -7,7 +7,7 @@ import 'package:mocktail/mocktail.dart';
 
 class MockGetIt extends Mock implements GetIt {}
 
-class MockGetItConfig extends Mock implements GetItConfig {}
+class MockGetItConfig extends Mock implements InjectableConfig {}
 
 void main() {
   late GetItRegistrySource sut;
@@ -26,23 +26,23 @@ void main() {
 
   group('GetItRegistrySource', () {
     test('init should call configureDependencies with correct parameters',
-            () async {
-          // Arrange
-          const environment = Environment.development;
-          when(() => mockConfig.configureDependencies(environment.name, mockGetIt))
-              .thenAnswer((_) async => {});
+        () async {
+      // Arrange
+      const environment = Environment.development;
+      when(() => mockConfig.configureDependencies(environment.name, mockGetIt))
+          .thenAnswer((_) async => {});
 
-          // Act
-          await sut.init(environment);
+      // Act
+      await sut.init(environment);
 
-          // Assert
-          verify(
-                () => mockConfig.configureDependencies(
-              environment.name,
-              mockGetIt,
-            ),
-          );
-        });
+      // Assert
+      verify(
+        () => mockConfig.configureDependencies(
+          environment.name,
+          mockGetIt,
+        ),
+      );
+    });
 
     test('get should delegate to GetIt with correct parameters', () {
       // Arrange
@@ -89,18 +89,18 @@ void main() {
     });
 
     test(
-        'register should delegate to GetIt registerFactory with correct function',
-            () {
-          // Arrange
-          String factoryFunction() => 'test';
-          when(() => mockGetIt.registerFactory<String>(any())).thenReturn(null);
+        'register should delegate to GetIt registerFactory '
+        'with correct function', () {
+      // Arrange
+      String factoryFunction() => 'test';
+      when(() => mockGetIt.registerFactory<String>(any())).thenReturn(null);
 
-          // Act
-          sut.register<String>(factoryFunction);
+      // Act
+      sut.register<String>(factoryFunction);
 
-          // Assert
-          verify(() => mockGetIt.registerFactory<String>(any()));
-        });
+      // Assert
+      verify(() => mockGetIt.registerFactory<String>(any()));
+    });
 
     test('should throw when GetIt throws', () {
       // Arrange

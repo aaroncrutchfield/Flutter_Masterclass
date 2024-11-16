@@ -1,4 +1,4 @@
-import 'package:{{project_name}}/app/di/data/annotations.dart' as config;
+import 'package:{{project_name}}/app/di/data/injectable/annotations.dart' as config;
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -13,10 +13,6 @@ void main() {
 
     test('Production environment annotation is correct', () {
       expect(config.production.name, 'production');
-    });
-
-    test('Test environment annotation is correct', () {
-      expect(config.testing.name, 'testing');
     });
   });
 }
