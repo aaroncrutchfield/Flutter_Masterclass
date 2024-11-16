@@ -1,6 +1,5 @@
 import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/app/environments.dart';
-import 'package:ai_chat_app/app/view/app.dart';
 import 'package:ai_chat_app/l10n/arb/app_localizations.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +7,6 @@ import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 import 'main.directories.g.dart';
-
-
 
 Future<void> main() async {
   await appRegistry.init(Environment.development);

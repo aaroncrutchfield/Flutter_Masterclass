@@ -47,7 +47,7 @@ class ChatTitle extends StatelessWidget {
                 size: 16,
                 Icons.expand_more,
                 color: Colors.white,
-              )
+              ),
             ],
           ),
         ),

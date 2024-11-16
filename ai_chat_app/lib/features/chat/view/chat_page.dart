@@ -24,7 +24,7 @@ class ChatView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ChatCubit, ChatState>(
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           appBar: ChatAppBar(),
           body: Column(
             children: [

@@ -34,9 +34,7 @@ command:
 
   bootstrap:
     hooks:
-      post:
-        - melos build-runner
-        - melos gen-l10n
+      post: melos build_runner && melos gen_l10n && melos fix
     # It seems so that running "pub get" in parallel has some issues (like
     # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
     # makes the CI much more stable.
@@ -47,14 +45,14 @@ command:
       sdk: ^3.5.0
 
 scripts:
-  build-runner:
+  build_runner:
     run: melos exec --depends-on="build_runner" dart run build_runner build --delete-conflicting-outputs
     description: Run `build_runner build` in all packages.
-  gen-l10n:
+  gen_l10n:
     run: melos exec --depends-on="flutter_localizations" flutter gen-l10n
     description: Generate localization files for all packages.
-  format:
-    run: melos exec -- dart format .
+  fix:
+    run: melos exec -- dart format . && melos exec -- dart fix --apply
     description: Run `dart format` in all packages.
 
   test:selective_unit_test:

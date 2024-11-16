@@ -17,5 +17,6 @@ Widget buildChatGreeting(BuildContext context) => const ChatGreeting();
 @widgetbook.UseCase(name: 'Default', type: ChatInput, path: '[Widgets]/Chat')
 Widget buildChatInput(BuildContext context) => const ChatInput();
 
-@widgetbook.UseCase(name: 'Default', type: FileInputSection, path: '[Widgets]/Chat')
+@widgetbook.UseCase(
+    name: 'Default', type: FileInputSection, path: '[Widgets]/Chat')
 Widget buildFileInput(BuildContext context) => const FileInputSection();
