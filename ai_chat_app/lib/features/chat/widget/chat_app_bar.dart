@@ -1,5 +1,7 @@
 import 'package:ai_chat_app/app/theme.dart';
+import 'package:ai_chat_app/features/chat/bloc/chat_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatAppBar({super.key});
@@ -29,13 +31,14 @@ class ChatTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ChatBloc>();
     final textTheme = context.theme.textTheme;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         TextButton(
-          onPressed: () {},
+          onPressed: () => bloc.add(const ChooseModel()),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -53,7 +56,7 @@ class ChatTitle extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         TextButton.icon(
-          onPressed: () {},
+          onPressed: () => bloc.add(const ChooseProject()),
           style: TextButton.styleFrom(
             minimumSize: Size.zero,
             padding: const EdgeInsets.symmetric(
@@ -79,10 +82,11 @@ class ChatBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ChatBloc>();
     final textTheme = context.theme.textTheme;
 
     return TextButton.icon(
-      onPressed: () {},
+      onPressed: () => bloc.add(const NavigateBack()),
       icon: const Icon(
         Icons.arrow_back,
         color: Color(0xFFF0997D), // Coral color for back arrow

@@ -17,6 +17,7 @@ import 'package:ai_chat_app/core/auth/auth_repository.dart' as _i846;
 import 'package:ai_chat_app/core/auth/data/auth_remote_data_source.dart'
     as _i116;
 import 'package:ai_chat_app/features/auth/cubit/auth_cubit.dart' as _i177;
+import 'package:ai_chat_app/features/chat/bloc/chat_bloc.dart' as _i531;
 import 'package:ai_chat_app/features/counter/cubit/counter_cubit.dart'
     as _i1053;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
@@ -42,6 +43,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final firebaseModule = _$FirebaseModule();
     gh.factory<_i1053.CounterCubit>(() => _i1053.CounterCubit());
+    gh.factory<_i531.ChatBloc>(() => _i531.ChatBloc());
     gh.singleton<_i817.RootAutoRouter>(() => _i817.RootAutoRouter());
     gh.singleton<_i982.FirebaseOptions>(
       () => firebaseModule.getStgOptions(),
