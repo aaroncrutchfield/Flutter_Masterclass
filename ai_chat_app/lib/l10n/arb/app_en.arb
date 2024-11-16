@@ -7,5 +7,9 @@
     "chatGreeting": "How can I help you?",
     "@chatGreeting": {
         "description": "Greeting message shown in the chat"
+    },
+    "chatInputHint": "Chat with AI",
+    "@chatInputHint": {
+        "description": "Hint text shown in the chat"
     }
 }

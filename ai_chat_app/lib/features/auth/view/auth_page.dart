@@ -33,7 +33,7 @@ class AuthView extends StatelessWidget {
         // Executes the onSignedIn callback when the user signs in.
         AuthStateChangeAction<SignedIn>(
           (ctx, state) {
-            cubit.navigateToCounter();
+            cubit.navigateToChat();
             // Navigate to the home page after the user signs in.
           },
         ),

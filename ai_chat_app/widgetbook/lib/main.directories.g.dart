@@ -45,7 +45,21 @@ final directories = <_i1.WidgetbookNode>[
               name: 'Default',
               builder: _i3.buildChatGreeting,
             ),
-          )
+          ),
+          _i1.WidgetbookLeafComponent(
+            name: 'ChatInput',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i3.buildChatInput,
+            ),
+          ),
+          _i1.WidgetbookLeafComponent(
+            name: 'FileInput',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i3.buildFileInput,
+            ),
+          ),
         ],
       )
     ],
