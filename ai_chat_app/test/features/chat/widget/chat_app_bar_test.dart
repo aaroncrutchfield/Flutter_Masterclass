@@ -17,10 +17,6 @@ void main() {
   setUp(() {
     mockChatBloc = MockChatBloc();
 
-    // when(() => mockChatBloc.state).thenReturn(const ChatState());
-    // when(() => mockChatBloc.stream).thenAnswer((_) => const Stream.empty());
-    // when(() => mockChatBloc.close()).thenAnswer((_) => Future.value());
-
     appRegistry.register<ChatBloc>(() => mockChatBloc);
   });
 
