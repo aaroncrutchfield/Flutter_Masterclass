@@ -25,5 +25,6 @@ class RootAutoRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(path: '/login', page: AuthRoute.page, initial: true),
         AutoRoute(path: '/counter', page: CounterRoute.page),
+        AutoRoute(path: '/chat', page: ChatRoute.page),
       ];
 }

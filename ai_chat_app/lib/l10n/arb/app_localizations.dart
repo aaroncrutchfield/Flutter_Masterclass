@@ -106,6 +106,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How can I help you?'**
   String get chatGreeting;
+
+  /// Hint text shown in the chat
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with AI'**
+  String get chatInputHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

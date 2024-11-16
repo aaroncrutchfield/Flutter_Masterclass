@@ -11,4 +11,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get chatGreeting => '¿En qué puedo ayudarte?';
+
+  @override
+  String get chatInputHint => 'Chatea con IA';
 }

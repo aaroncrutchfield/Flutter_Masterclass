@@ -1,5 +1,4 @@
 import 'package:ai_chat_app/features/chat/chat.dart';
-import 'package:ai_chat_app/features/chat/widget/chat_greeting.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,8 +24,13 @@ class ChatView extends StatelessWidget {
     return BlocBuilder<ChatCubit, ChatState>(
       builder: (context, state) {
         return const Scaffold(
-          body: Center(
-            child: ChatGreeting(),
+          body: Column(
+            children: [
+              Expanded(
+                child: Center(child: ChatGreeting()),
+              ),
+              ChatInput(),
+            ],
           ),
         );
       },
