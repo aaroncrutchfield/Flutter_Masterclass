@@ -3,11 +3,8 @@ import 'package:ai_chat_app/features/chat/bloc/chat_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
+class ChatAppBar extends StatelessWidget {
   const ChatAppBar({super.key});
-
-  @override
-  Size get preferredSize => const Size.fromHeight(64);
 
   @override
   Widget build(BuildContext context) {

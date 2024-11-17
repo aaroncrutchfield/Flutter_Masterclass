@@ -22,7 +22,7 @@ void main() {
 
   tearDown(appRegistry.reset);
 
-  Widget createWidgetUnderTest(Widget child) {
+  Widget blocProvider(Widget child) {
     return BlocProvider<ChatBloc>.value(
       value: mockChatBloc,
       child: child,
@@ -31,23 +31,18 @@ void main() {
 
   group('ChatAppBar', () {
     testWidgets('renders correctly with all components', (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatAppBar()));
+      await tester.pumpApp(blocProvider(const ChatAppBar()));
 
       expect(find.byType(ChatBackButton), findsOneWidget);
       expect(find.byType(ChatTitle), findsOneWidget);
       expect(find.byType(SafeArea), findsOneWidget);
-    });
-
-    testWidgets('has correct preferred size', (tester) async {
-      const chatAppBar = ChatAppBar();
-      expect(chatAppBar.preferredSize, const Size.fromHeight(64));
     });
   });
 
   group('ChatTitle', () {
     testWidgets('displays model selection button with correct text',
         (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatTitle()));
+      await tester.pumpApp(blocProvider(const ChatTitle()));
 
       expect(find.text('Claude 3.5 Sonnet'), findsOneWidget);
       expect(find.byIcon(Icons.expand_more), findsOneWidget);
@@ -55,7 +50,7 @@ void main() {
 
     testWidgets('displays project selection button with correct text',
         (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatTitle()));
+      await tester.pumpApp(blocProvider(const ChatTitle()));
 
       expect(find.text('Choose project'), findsOneWidget);
       expect(find.byIcon(Icons.category_outlined), findsOneWidget);
@@ -63,7 +58,7 @@ void main() {
 
     testWidgets('triggers ChooseModel event when model button is pressed',
         (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatTitle()));
+      await tester.pumpApp(blocProvider(const ChatTitle()));
 
       await tester.tap(find.text('Claude 3.5 Sonnet'));
       await tester.pump();
@@ -73,7 +68,7 @@ void main() {
 
     testWidgets('triggers ChooseProject event when project button is pressed',
         (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatTitle()));
+      await tester.pumpApp(blocProvider(const ChatTitle()));
 
       await tester.tap(find.text('Choose project'));
       await tester.pump();
@@ -84,21 +79,21 @@ void main() {
 
   group('ChatBackButton', () {
     testWidgets('renders correctly with icon and text', (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatBackButton()));
+      await tester.pumpApp(blocProvider(const ChatBackButton()));
 
       expect(find.byIcon(Icons.arrow_back), findsOneWidget);
       expect(find.text('Chats'), findsOneWidget);
     });
 
     testWidgets('has correct coral color', (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatBackButton()));
+      await tester.pumpApp(blocProvider(const ChatBackButton()));
 
       final icon = tester.widget<Icon>(find.byIcon(Icons.arrow_back));
       expect(icon.color, const Color(0xFFF0997D));
     });
 
     testWidgets('triggers NavigateBack event when pressed', (tester) async {
-      await tester.pumpApp(createWidgetUnderTest(const ChatBackButton()));
+      await tester.pumpApp(blocProvider(const ChatBackButton()));
 
       await tester.tap(find.byType(Text));
       await tester.pump();
