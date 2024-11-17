@@ -23,7 +23,7 @@ class AuthCubit extends Cubit<AuthState> {
     // If the user is signed in, navigate to the home page.
     // If the user is not signed in, navigate to the sign-in screen.
     if (_authRepository.signedIn) {
-      navigateToCounter();
+      navigateToChat();
     } else {
       navigateToAuth();
     }

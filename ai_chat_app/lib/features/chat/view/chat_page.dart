@@ -26,9 +26,9 @@ class ChatView extends StatelessWidget {
     return BlocBuilder<ChatBloc, ChatState>(
       builder: (context, state) {
         return const Scaffold(
-          appBar: ChatAppBar(),
           body: Column(
             children: [
+              ChatAppBar(),
               Expanded(
                 child: Center(child: ChatGreeting()),
               ),

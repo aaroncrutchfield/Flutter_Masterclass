@@ -4,11 +4,18 @@ import 'dart:developer';
 import 'package:ai_chat_app/app/di/injection_registry.dart';
 import 'package:ai_chat_app/app/environments.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
+
+  @override
+  void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
+    super.onEvent(bloc, event);
+    log('onEvent(${bloc.runtimeType}, $event)');
+  }
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
@@ -31,7 +38,25 @@ Future<void> bootstrap({
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
   WidgetsFlutterBinding.ensureInitialized();
-  setUrlStrategy(PathUrlStrategy());
+
+  // Enable Edge-to-Edge on Android 10+
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // Set the status bar icon color to white
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      // Setting a transparent navigation bar color
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
+      // Default
+      systemNavigationBarContrastEnforced: true,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.light,
+    ),
+  );
+
+  usePathUrlStrategy();
+
 
   await appRegistry.init(environment);
   Bloc.observer = const AppBlocObserver();
