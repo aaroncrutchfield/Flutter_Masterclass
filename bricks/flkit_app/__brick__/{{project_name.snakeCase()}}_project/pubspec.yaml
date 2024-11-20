@@ -1,0 +1,10 @@
+name: {{project_name.snakeCase()}}_project
+description: A repository for {{project_name.snakeCase()}}
+
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  melos: ^6.2.0
