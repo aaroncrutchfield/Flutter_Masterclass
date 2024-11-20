@@ -1,0 +1,25 @@
+name: {{project_name.snakeCase()}}_widgetbook
+description: "A widgetbook for {{project_name.snakeCase()}}."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  {{project_name.snakeCase()}}:
+    path: ../
+  flutter:
+    sdk: flutter
+  widgetbook: ^3.10.0
+  widgetbook_annotation: ^3.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  widgetbook_generator: ^3.9.0
+  build_runner: ^2.4.13
+
+flutter:
+  uses-material-design: true
