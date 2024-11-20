@@ -1,6 +1,6 @@
-name: flkit_app
-description: A Flutter app created by Flutter Launch Kit.
-version: 0.1.0
+name: flutter_launch_kit
+description: Creates a Flutter app using the Flutter Launch Kit template.
+version: 0.0.1
 
 environment:
   mason: ">=0.1.0-dev.52 <0.1.0"

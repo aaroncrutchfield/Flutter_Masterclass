@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-11-20
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_launch_kit` - `v0.0.1`](#flutter_launch_kit---v001)
+
+---
+
+#### `flutter_launch_kit` - `v0.0.1`
+
+ - **FEAT**(flkit): Rename brick to Flutter Launch Kit([#32](https://github.com/aaroncrutchfield/Flutter_Masterclass.git/issues/32)). ([52383c31](https://github.com/aaroncrutchfield/Flutter_Masterclass.git/commit/52383c31d593d07474f2ae961a39604ab5b141bb))
+
+
 ## 2024-11-07
 
 ### Changes
