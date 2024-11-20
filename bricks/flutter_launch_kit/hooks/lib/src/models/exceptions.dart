@@ -1,4 +1,4 @@
-import 'package:very_good_core_hooks/very_good_core_hooks.dart';
+import 'package:flutter_launch_kit_app/hooks.dart';
 
 /// {@template very_good_core_exception}
 /// An exception thrown by the `very_good_core` hooks.

@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:clock/clock.dart';
+import 'package:flutter_launch_kit_app/hooks.dart';
 import 'package:mason/mason.dart';
-import 'package:very_good_core_hooks/very_good_core_hooks.dart';
 
 Future<void> run(HookContext context) async {
   final configuration = VeryGoodCoreConfiguration.fromHookVars(context.vars);
