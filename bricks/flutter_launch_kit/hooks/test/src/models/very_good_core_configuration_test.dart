@@ -1,5 +1,5 @@
+import 'package:flutter_launch_kit_app/hooks.dart';
 import 'package:test/test.dart';
-import 'package:very_good_core_hooks/very_good_core_hooks.dart';
 
 void main() {
   group('$VeryGoodCoreConfiguration', () {

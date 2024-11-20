@@ -1,4 +1,4 @@
-name: very_good_core_hooks
+name: flutter_launch_kit
 
 environment:
   sdk: ^3.5.0

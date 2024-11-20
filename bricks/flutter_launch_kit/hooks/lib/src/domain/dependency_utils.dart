@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:mason/mason.dart';
 
-import 'package:very_good_core_hooks/src/models/dependencies.dart';
+import 'package:flutter_launch_kit_app/src/models/dependencies.dart';
+import 'package:mason/mason.dart';
 
 class DependencyUtils {
   const DependencyUtils(

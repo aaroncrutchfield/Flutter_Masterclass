@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:very_good_core_hooks/very_good_core_hooks.dart';
+import 'package:flutter_launch_kit_app/hooks.dart';
 
 /// The variables specified by this hook.
 ///
