@@ -3,11 +3,15 @@ name: flutter_masterclass
 repository: https://github.com/aaroncrutchfield/Flutter_Masterclass.git
 
 # TODO update packages to match your project structure
+ignore:
+  # Brick template directories don't need to be included in the workspace
+  - "**/__brick__/**"
+
 packages:
   # Directory where the app will live
   - ai_chat_app
-  - bricks/**
   - ai_chat_app/widgetbook
+  - bricks/**
 
 categories:
   app:
@@ -27,10 +31,6 @@ command:
     # Additionally build a changelog at the root of the workspace.
     workspaceChangelog: true
     releaseUrl: true
-#    message: |
-#      chore: Cut app release 🎉
-#
-#      {new_package_versions}
 
   bootstrap:
     hooks:
@@ -38,7 +38,7 @@ command:
     # It seems so that running "pub get" in parallel has some issues (like
     # https://github.com/dart-lang/pub/issues/3404). Disabling this feature
     # makes the CI much more stable.
-    runPubGetInParallel: false
+    runPubGetInParallel: true
     usePubspecOverrides: true
 
     environment:
