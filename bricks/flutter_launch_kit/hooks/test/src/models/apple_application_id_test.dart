@@ -1,4 +1,4 @@
-import 'package:flutter_launch_kit_app/hooks.dart';
+import 'package:flutter_launch_kit_hooks/hooks.dart';
 import 'package:test/test.dart';
 
 void main() {

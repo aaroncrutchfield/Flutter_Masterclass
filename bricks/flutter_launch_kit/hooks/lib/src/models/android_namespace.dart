@@ -1,4 +1,4 @@
-import 'package:flutter_launch_kit_app/hooks.dart';
+import 'package:flutter_launch_kit_hooks/hooks.dart';
 
 /// {@template android_namespace}
 /// Every Android module has a namespace, which is used as the Kotlin or Java
