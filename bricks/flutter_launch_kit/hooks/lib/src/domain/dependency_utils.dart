@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter_launch_kit_app/src/models/dependencies.dart';
+import 'package:flutter_launch_kit_hooks/src/models/dependencies.dart';
 import 'package:mason/mason.dart';
 
 class DependencyUtils {

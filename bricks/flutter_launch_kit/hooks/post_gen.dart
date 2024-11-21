@@ -1,5 +1,5 @@
 // hooks/post_gen.dart
-import 'package:flutter_launch_kit_app/hooks.dart';
+import 'package:flutter_launch_kit_hooks/hooks.dart';
 import 'package:mason/mason.dart';
 
 Future<void> run(HookContext context) async {
