@@ -16,7 +16,7 @@ Future<void> run(HookContext context) async {
     // await dependencyUtils.installDependencies();
 
     // Run melos bootstrap
-    await melosUtils.bootstrap();
+    // await melosUtils.bootstrap();
 
     // Show setup instructions
     setupUtils.showNextSteps();
