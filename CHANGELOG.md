@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2024-11-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_launch_kit` - `v0.0.1+2`](#flutter_launch_kit---v0012)
+
+---
+
+#### `flutter_launch_kit` - `v0.0.1+2`
+
+ - **FIX**(flkit): Melos bootstrap fails to run post gen([#38](https://github.com/aaroncrutchfield/Flutter_Masterclass.git/issues/38)). ([7a3e319c](https://github.com/aaroncrutchfield/Flutter_Masterclass.git/commit/7a3e319c672433805ca686b5f20c99926d112170))
+
+
 ## 2024-11-20
 
 ### Changes
