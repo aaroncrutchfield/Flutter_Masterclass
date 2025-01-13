@@ -7,4 +7,4 @@ environment:
   sdk: ^3.5.0
 
 dependencies:
-  melos: ^6.2.0     # Monorepo management
+  melos: ^6.3.1     # Monorepo management
